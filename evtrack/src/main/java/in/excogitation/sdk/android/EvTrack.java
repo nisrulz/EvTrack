@@ -52,11 +52,11 @@ public class EvTrack {
         }
 
         //Get LatLong
-        double[] latlong = deviceInfo.getLatLong(context);
+        double[] latlong = deviceInfo.getLatLong();
 
         //Push extra data in event request
         event_params.put("aid", deviceInfo.getAndroidID());
-        event_params.put("act", deviceInfo.getActivityName(context));
+        event_params.put("act", deviceInfo.getActivityName());
         event_params.put("time", String.valueOf(deviceInfo.getTime()));
         event_params.put("ct", deviceInfo.getNetworkType());
         event_params.put("lat", String.valueOf(latlong[0]));
@@ -123,9 +123,12 @@ public class EvTrack {
                 .url(url)
                 .post(formBody)
                 .build();
-
-        Call call = client.newCall(request);
-        call.enqueue(callback);
+        try {
+            Call call = client.newCall(request);
+            call.enqueue(callback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

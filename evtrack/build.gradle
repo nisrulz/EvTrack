@@ -46,7 +46,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.github.nisrulz:easydeviceinfo:1.1.2'
+    compile 'com.github.nisrulz:easydeviceinfo:1.1.4'
     compile 'com.squareup.okhttp:okhttp:2.4.0'
 }
 
