@@ -1,0 +1,20 @@
+in.excogitation.sdk.android.BuildConfig -> in.excogitation.sdk.android.BuildConfig:
+    boolean DEBUG -> DEBUG
+    java.lang.String APPLICATION_ID -> APPLICATION_ID
+    java.lang.String BUILD_TYPE -> BUILD_TYPE
+    java.lang.String FLAVOR -> FLAVOR
+    int VERSION_CODE -> VERSION_CODE
+    java.lang.String VERSION_NAME -> VERSION_NAME
+    6:6:void <init>() -> <init>
+in.excogitation.sdk.android.EvTrack -> in.excogitation.sdk.android.EvTrack:
+    in.excogitation.lib_deviceinfo.EasyDeviceInfo deviceInfo -> a
+    com.squareup.okhttp.OkHttpClient client -> b
+    java.lang.String LOGTAG -> c
+    android.content.Context context -> d
+    boolean enableLogs_exp -> e
+    boolean enableLogs_event -> f
+    23:32:void <init>(android.content.Context) -> <init>
+    35:37:void enableLogs() -> enableLogs
+    42:71:void recordEvent(android.support.v4.util.ArrayMap,java.lang.String,com.squareup.okhttp.Callback) -> recordEvent
+    75:104:void recordException(java.lang.Exception,android.support.v4.util.ArrayMap,java.lang.String,com.squareup.okhttp.Callback) -> recordException
+    115:129:void postReq(com.squareup.okhttp.OkHttpClient,java.lang.String,android.support.v4.util.ArrayMap,com.squareup.okhttp.Callback) -> a
