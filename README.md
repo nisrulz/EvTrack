@@ -4,15 +4,7 @@ Event & Exception tracking made easy.
 Based of [EasyDeviceInfo](https://github.com/nisrulz/mavenrepo/tree/master/releases/com/github/nisrulz/easydeviceinfo) lib and [okhttp](https://github.com/square/okhttp).
 
 #Integration
-- Include the below into your app's ***build.gradle*** right at the very bottom.
-```gradle
-repositories {
-    maven{
-        url 'http://maven.excogitation.in/'
-    }
-}
-```
-- Next add the dependency
+- EvTrack is available in the MavenCentral, so getting it as simple as adding it as a dependency
 ```gradle
 compile 'com.github.nisrulz:evtrack:1.0.1'
 ```
@@ -61,6 +53,19 @@ private final Callback httpCallback = new Callback() {
        }
    };
 ```
+
+
+
+---
+> *NOTE : Some variables used in build.gradle correspond to*
+
+> **COMPILE_SDK_VERSION**=23
+
+> **BUILDTOOLS_VERSION**=23.0.1
+
+> **VERSION_NAME**=1.0.0
+
+> **VERSION_CODE**=1
 
 # License
 
