@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Evtrack : Android library to make event and exception tracking easy">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Evtrack</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/nisrulz/EvTrack">View on GitHub</a>
+
+          <h1 id="project_title">Evtrack</h1>
+          <h2 id="project_tagline">Android library to make event and exception tracking easy</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/nisrulz/EvTrack/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/nisrulz/EvTrack/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="evtrack" class="anchor" href="#evtrack" aria-hidden="true"><span class="octicon octicon-link"></span></a>EvTrack</h1>
+
+<p>Event &amp; Exception tracking made easy.
+Based of <a href="https://github.com/nisrulz/mavenrepo/tree/master/releases/com/github/nisrulz/easydeviceinfo">EasyDeviceInfo</a> lib and <a href="https://github.com/square/okhttp">okhttp</a>.</p>
+
+<h1>
+<a id="integration" class="anchor" href="#integration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Integration</h1>
+
+<ul>
+<li>EvTrack is available in the MavenCentral, so getting it as simple as adding it as a dependency</li>
+</ul>
+
+<div class="highlight highlight-source-groovy-gradle"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.github.nisrulz:evtrack:1.0.1<span class="pl-pds">'</span></span></pre></div>
+
+<h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
+
+<ul>
+<li>Create an instance of the <strong><em>EvTrack</em></strong> class</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">EvTrack</span> evTrack <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">EvTrack</span>();</pre></div>
+
+<ul>
+<li>Next if in debug stage, enable logs</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre>evTrack<span class="pl-k">.</span>enableLogs();</pre></div>
+
+<ul>
+<li>To record an event, pass in an ArrayMap to recordEvent() function</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">ArrayMap&lt;<span class="pl-smi">String</span>, <span class="pl-smi">String</span>&gt;</span> event_params <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-k">ArrayMap&lt;<span class="pl-smi">String</span>,<span class="pl-smi">String</span>&gt;</span>();
+event_params<span class="pl-k">.</span>put(<span class="pl-s"><span class="pl-pds">"</span>key1<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>value1<span class="pl-pds">"</span></span>);
+event_params<span class="pl-k">.</span>put(<span class="pl-s"><span class="pl-pds">"</span>key2<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>value2<span class="pl-pds">"</span></span>);
+<span class="pl-c1">..</span>
+event_params<span class="pl-k">.</span>put(<span class="pl-s"><span class="pl-pds">"</span>key7<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>value7<span class="pl-pds">"</span></span>);
+evTrack<span class="pl-k">.</span>recordEvent(event_params, <span class="pl-c1">SERVER</span>, httpCallback);</pre></div>
+
+<ul>
+<li>To record an exception, pass in an ArrayMap to recordException() function</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">ArrayMap&lt;<span class="pl-smi">String</span>, <span class="pl-smi">String</span>&gt;</span> exp_param <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-k">ArrayMap&lt;<span class="pl-smi">String</span>,<span class="pl-smi">String</span>&gt;</span>();
+exp_param<span class="pl-k">.</span>put(<span class="pl-s"><span class="pl-pds">"</span>key1<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>value1<span class="pl-pds">"</span></span>);
+exp_param<span class="pl-k">.</span>put(<span class="pl-s"><span class="pl-pds">"</span>key2<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>value2<span class="pl-pds">"</span></span>);
+<span class="pl-c1">..</span>
+exp_param<span class="pl-k">.</span>put(<span class="pl-s"><span class="pl-pds">"</span>key7<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>value7<span class="pl-pds">"</span></span>);
+evTrack<span class="pl-k">.</span>recordException(e, exp_param, <span class="pl-c1">SERVER</span> , httpCallback);</pre></div>
+
+<ul>
+<li>Implement the Callback</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">private</span> <span class="pl-k">final</span> <span class="pl-smi">Callback</span> httpCallback <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">Callback</span>() {
+       <span class="pl-k">@Override</span>
+       <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onFailure</span>(<span class="pl-smi">Request</span> <span class="pl-v">request</span>, <span class="pl-smi">IOException</span> <span class="pl-v">e</span>) {
+           <span class="pl-smi">Log</span><span class="pl-k">.</span>e(<span class="pl-c1">LOGTAG</span>, <span class="pl-s"><span class="pl-pds">"</span>Req Failed : <span class="pl-pds">"</span></span> <span class="pl-k">+</span> e<span class="pl-k">.</span>getLocalizedMessage());
+       }
+
+       <span class="pl-k">@Override</span>
+       <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onResponse</span>(<span class="pl-smi">Response</span> <span class="pl-v">response</span>) <span class="pl-k">throws</span> <span class="pl-smi">IOException</span> {
+           <span class="pl-smi">Log</span><span class="pl-k">.</span>i(<span class="pl-c1">LOGTAG</span>, <span class="pl-s"><span class="pl-pds">"</span>Req Successful : <span class="pl-pds">"</span></span> <span class="pl-k">+</span> <span class="pl-smi">String</span><span class="pl-k">.</span>valueOf(response<span class="pl-k">.</span>code()));
+       }
+   };</pre></div>
+
+<hr>
+
+<blockquote>
+<p><em>NOTE : Some variables used in build.gradle correspond to</em></p>
+
+<p><strong>COMPILE_SDK_VERSION</strong>=23</p>
+
+<p><strong>BUILDTOOLS_VERSION</strong>=23.0.1</p>
+
+<p><strong>VERSION_NAME</strong>=1.0.1</p>
+
+<p><strong>VERSION_CODE</strong>=1</p>
+</blockquote>
+
+<h1>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h1>
+
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License 2.0</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Evtrack maintained by <a href="https://github.com/nisrulz">nisrulz</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
