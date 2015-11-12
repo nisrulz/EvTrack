@@ -63,7 +63,7 @@ private final Callback httpCallback = new Callback() {
 
 > **BUILDTOOLS_VERSION**=23.0.1
 
-> **VERSION_NAME**=1.0.0
+> **VERSION_NAME**=1.0.1
 
 > **VERSION_CODE**=1
 
