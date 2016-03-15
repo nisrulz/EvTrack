@@ -1,44 +1,41 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Evtrack : Android library to make event and exception tracking easy">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-    <title>Evtrack</title>
+    <title>Evtrack by nisrulz</title>
   </head>
 
   <body>
+    <header>
+      <div class="inner">
+        <h1>Evtrack</h1>
+        <h2>Android library to make event and exception tracking easy</h2>
+        <a href="https://github.com/nisrulz/EvTrack" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/nisrulz/EvTrack">View on GitHub</a>
-
-          <h1 id="project_title">Evtrack</h1>
-          <h2 id="project_tagline">Android library to make event and exception tracking easy</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/nisrulz/EvTrack/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/nisrulz/EvTrack/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
-<a id="evtrack" class="anchor" href="#evtrack" aria-hidden="true"><span class="octicon octicon-link"></span></a>EvTrack</h1>
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="evtrack" class="anchor" href="#evtrack" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>EvTrack</h1>
 
 <p>Event &amp; Exception tracking made easy.
 Based of <a href="https://github.com/nisrulz/mavenrepo/tree/master/releases/com/github/nisrulz/easydeviceinfo">EasyDeviceInfo</a> lib and <a href="https://github.com/square/okhttp">okhttp</a>.</p>
 
 <h1>
-<a id="integration" class="anchor" href="#integration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Integration</h1>
+<a id="integration" class="anchor" href="#integration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Integration</h1>
 
 <ul>
 <li>EvTrack is available in the MavenCentral, so getting it as simple as adding it as a dependency</li>
@@ -47,7 +44,7 @@ Based of <a href="https://github.com/nisrulz/mavenrepo/tree/master/releases/com/
 <div class="highlight highlight-source-groovy-gradle"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.github.nisrulz:evtrack:1.0.1<span class="pl-pds">'</span></span></pre></div>
 
 <h1>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h1>
 
 <ul>
 <li>Create an instance of the <strong><em>EvTrack</em></strong> class</li>
@@ -99,36 +96,42 @@ evTrack<span class="pl-k">.</span>recordException(e, exp_param, <span class="pl-
        }
    };</pre></div>
 
-<hr>
-
-<blockquote>
-<p><em>NOTE : Some variables used in build.gradle correspond to</em></p>
-
-<p><strong>COMPILE_SDK_VERSION</strong>=23</p>
-
-<p><strong>BUILDTOOLS_VERSION</strong>=23.0.1</p>
-
-<p><strong>VERSION_NAME</strong>=1.0.1</p>
-
-<p><strong>VERSION_CODE</strong>=1</p>
-</blockquote>
-
 <h1>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h1>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h1>
 
-<p><a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License 2.0</a></p>
-      </section>
+<pre><code>Copyright 2016 Nishant Srivastava
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+</code></pre>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/nisrulz/EvTrack/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/nisrulz/EvTrack/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/nisrulz/EvTrack"></a> is maintained by <a href="https://github.com/nisrulz">nisrulz</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
     </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Evtrack maintained by <a href="https://github.com/nisrulz">nisrulz</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
+  
   </body>
 </html>
