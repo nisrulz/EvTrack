@@ -14,9 +14,6 @@ import com.squareup.okhttp.RequestBody;
 
 import in.excogitation.lib_deviceinfo.EasyDeviceInfo;
 
-/**
- * @author Nishant Srivastava
- */
 public class EvTrack {
     private EasyDeviceInfo deviceInfo;
     private OkHttpClient client;
