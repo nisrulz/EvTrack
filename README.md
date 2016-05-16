@@ -1,5 +1,7 @@
 #EvTrack    [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/evtrack/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/evtrack)
 
+[![Twitter](https://img.shields.io/badge/Twitter-@nisrulz-blue.svg?style=flat)](http://twitter.com/nisrulz)
+
 Event & Exception tracking made easy.
 Based of [EasyDeviceInfo](https://github.com/nisrulz/mavenrepo/tree/master/releases/com/github/nisrulz/easydeviceinfo) lib and [okhttp](https://github.com/square/okhttp).
 
