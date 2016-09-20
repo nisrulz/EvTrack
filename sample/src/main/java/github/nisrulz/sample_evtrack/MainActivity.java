@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package in.excogitation.evtrack;
+package github.nisrulz.sample_evtrack;
 
 import android.os.Bundle;
 import android.support.v4.util.ArrayMap;
@@ -22,7 +22,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import in.excogitation.sdk.android.EvTrack;
+import github.nisrulz.evtrack.EvTrack;
 import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -36,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
   Button btn_event, btn_exp;
 
-  @Override protected void onCreate(Bundle savedInstanceState) {
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
@@ -45,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
     btn_event = (Button) findViewById(R.id.button_event);
     btn_event.setOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(View view) {
+      @Override
+      public void onClick(View view) {
         ArrayMap<String, String> event_params = new ArrayMap<String, String>();
         event_params.put("sdk", "1.0");
         evTrack.recordEvent(event_params, SERVER + "test", httpCallback);
@@ -54,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
     btn_exp = (Button) findViewById(R.id.button_exp);
     btn_exp.setOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(View view) {
+      @Override
+      public void onClick(View view) {
         try {
           throw new RuntimeException("This is an Error");
         } catch (RuntimeException e) {
@@ -68,11 +71,13 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private final Callback httpCallback = new Callback() {
-    @Override public void onFailure(Call call, IOException e) {
+    @Override
+    public void onFailure(Call call, IOException e) {
       Log.e(LOGTAG, "Req Failed : " + e.getLocalizedMessage());
     }
 
-    @Override public void onResponse(Call call, Response response) throws IOException {
+    @Override
+    public void onResponse(Call call, Response response) throws IOException {
       Log.i(LOGTAG, "Req Successful : " + String.valueOf(response.code()));
     }
   };

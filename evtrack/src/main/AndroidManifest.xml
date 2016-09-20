@@ -15,14 +15,10 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="in.excogitation.sdk.android">
+    package="github.nisrulz.evtrack">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <application
-        android:allowBackup="true"
-        android:supportsRtl="true">
-
-    </application>
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <application>
+  </application>
 
 </manifest>

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package in.excogitation.sdk.android;
+package github.nisrulz.evtrack;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
