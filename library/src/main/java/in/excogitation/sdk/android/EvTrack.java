@@ -20,7 +20,12 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.support.v4.util.ArrayMap;
 import android.util.Log;
-import github.nisrulz.easydeviceinfo.EasyDeviceInfo;
+import github.nisrulz.easydeviceinfo.base.EasyAppMod;
+import github.nisrulz.easydeviceinfo.base.EasyConfigMod;
+import github.nisrulz.easydeviceinfo.base.EasyDeviceMod;
+import github.nisrulz.easydeviceinfo.base.EasyIdMod;
+import github.nisrulz.easydeviceinfo.base.EasyLocationMod;
+import github.nisrulz.easydeviceinfo.base.EasyNetworkMod;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -29,7 +34,12 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 
 public class EvTrack {
-  private EasyDeviceInfo deviceInfo;
+  private EasyIdMod easyIdMod;
+  private EasyAppMod easyAppMod;
+  private EasyConfigMod easyConfigMod;
+  private EasyNetworkMod easyNetworkMod;
+  private EasyDeviceMod easyDeviceMod;
+  private EasyLocationMod easyLocationMod;
   private OkHttpClient client;
   private final String LOGTAG = getClass().getSimpleName().toString();
 
@@ -40,6 +50,12 @@ public class EvTrack {
 
   public EvTrack(Context context) {
     this.context = context;
+    easyLocationMod = new EasyLocationMod(context);
+    easyIdMod = new EasyIdMod(context);
+    easyAppMod = new EasyAppMod(context);
+    easyConfigMod = new EasyConfigMod(context);
+    easyNetworkMod = new EasyNetworkMod(context);
+    easyDeviceMod = new EasyDeviceMod(context);
   }
 
   public void enableLogs() {
@@ -50,8 +66,6 @@ public class EvTrack {
   public void recordEvent(ArrayMap<String, String> event_params, String url,
       Callback httpCallback) {
 
-    //Initialize DeviceInfo
-    deviceInfo = new EasyDeviceInfo(context);
     //Initialize Http Client
     client = new OkHttpClient();
 
@@ -64,20 +78,45 @@ public class EvTrack {
     }
 
     //Get LatLong
-    double[] latlong = deviceInfo.getLatLong();
+    double[] latlong = easyLocationMod.getLatLong();
 
     //Push extra data in event request
-    event_params.put("aid", deviceInfo.getAndroidID());
-    event_params.put("act", deviceInfo.getActivityName());
-    event_params.put("time", String.valueOf(deviceInfo.getTime()));
-    event_params.put("ct", deviceInfo.getNetworkType());
+    event_params.put("aid", easyIdMod.getAndroidID());
+    event_params.put("act", easyAppMod.getActivityName());
+    event_params.put("time", String.valueOf(easyConfigMod.getTime()));
+
+    switch (easyNetworkMod.getNetworkType()) {
+      case EasyNetworkMod.CELLULAR_2G:
+        event_params.put("ct", "2g");
+        break;
+      case EasyNetworkMod.CELLULAR_3G:
+        event_params.put("ct", "3g");
+        break;
+      case EasyNetworkMod.CELLULAR_4G:
+        event_params.put("ct", "4g");
+        break;
+      case EasyNetworkMod.CELLULAR_UNIDENTIFIED_GEN:
+        event_params.put("ct", "cug");
+        break;
+      case EasyNetworkMod.UNKNOWN:
+        event_params.put("ct", "na");
+        break;
+      case EasyNetworkMod.WIFI_WIFIMAX:
+        event_params.put("ct", "wifi");
+        break;
+      default:
+        event_params.put("ct", "na");
+        break;
+    }
+
     event_params.put("lat", String.valueOf(latlong[0]));
     event_params.put("lon", String.valueOf(latlong[1]));
 
     if (context.checkCallingOrSelfPermission(android.Manifest.permission.INTERNET)
         == PackageManager.PERMISSION_GRANTED) {
       postReq(client, url, event_params, httpCallback);
-    } else {
+    }
+    else {
       Log.e(LOGTAG, "INTERNET permission not granted! No request was made to the server!");
     }
   }
@@ -85,18 +124,17 @@ public class EvTrack {
   public void recordException(Exception exp, ArrayMap<String, String> exp_params, String url,
       Callback httpCallback) {
 
-    deviceInfo = new EasyDeviceInfo(context);
     //Initialize Http Client
     client = new OkHttpClient();
 
     exp_params.put("etype", exp.getClass().getName());
     exp_params.put("ecause", exp.getCause().toString());
     exp_params.put("emsg", exp.getMessage());
-    exp_params.put("time", Long.toString(deviceInfo.getTime()));
-    exp_params.put("aid", deviceInfo.getAndroidID());
-    exp_params.put("mk", deviceInfo.getManufacturer());
-    exp_params.put("mo", deviceInfo.getModel());
-    exp_params.put("osv", deviceInfo.getOSVersion());
+    exp_params.put("time", Long.toString(easyConfigMod.getTime()));
+    exp_params.put("aid", easyIdMod.getAndroidID());
+    exp_params.put("mk", easyDeviceMod.getManufacturer());
+    exp_params.put("mo", easyDeviceMod.getModel());
+    exp_params.put("osv", easyDeviceMod.getOSVersion());
 
     //Log the Exception details
     if (enableLogs_exp) {
@@ -110,7 +148,8 @@ public class EvTrack {
     if (context.checkCallingOrSelfPermission(android.Manifest.permission.INTERNET)
         == PackageManager.PERMISSION_GRANTED) {
       postReq(client, url, exp_params, httpCallback);
-    } else {
+    }
+    else {
       Log.e(LOGTAG, "INTERNET permission not granted! No request was made to the server!");
     }
   }
