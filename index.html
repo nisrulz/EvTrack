@@ -1,48 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-
     <title>Evtrack by nisrulz</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
-
   <body>
-
-    <header>
-      <div class="container">
+    <div class="wrapper">
+      <header>
         <h1>Evtrack</h1>
-        <h2>Android library to make event and exception tracking easy</h2>
+        <p>Android library to make event and exception tracking easy</p>
+        <p class="view"><a href="https://github.com/nisrulz/EvTrack">View the Project on GitHub <small>nisrulz/EvTrack</small></a></p>
+        <ul>
+          <li><a href="https://github.com/nisrulz/EvTrack/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/nisrulz/EvTrack/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/nisrulz/EvTrack">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>
+<a id="specs" class="anchor" href="#specs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Specs</h3>
 
-        <section id="downloads">
-          <a href="https://github.com/nisrulz/EvTrack/zipball/master" class="btn">Download as .zip</a>
-          <a href="https://github.com/nisrulz/EvTrack/tarball/master" class="btn">Download as .tar.gz</a>
-          <a href="https://github.com/nisrulz/EvTrack" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
-      </div>
-    </header>
+<p><a href="https://bintray.com/nisrulz/maven/com.github.nisrulz%3Aevtrack/_latestVersion"> <img src="https://api.bintray.com/packages/nisrulz/maven/com.github.nisrulz%3Aevtrack/images/download.svg" alt="Download"> </a> <a href="https://android-arsenal.com/api?level=9"><img src="https://img.shields.io/badge/API-9%2B-orange.svg?style=flat" alt="API"></a></p>
 
-    <div class="container">
-      <section id="main_content">
-        <h1>
-<a id="evtrack----" class="anchor" href="#evtrack----" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>EvTrack    <a href="https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/evtrack"><img src="https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/evtrack/badge.svg" alt="Maven Central"></a>
-</h1>
+<h3>
+<a id="show-some-heart" class="anchor" href="#show-some-heart" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Show some <g-emoji alias="heart" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2764.png" ios-version="6.0">❤️</g-emoji>
+</h3>
 
-<p>Event &amp; Exception tracking made easy.
-Based of <a href="https://github.com/nisrulz/mavenrepo/tree/master/releases/com/github/nisrulz/easydeviceinfo">EasyDeviceInfo</a> lib and <a href="https://github.com/square/okhttp">okhttp</a>.</p>
+<p><a href="https://github.com/nisrulz/evtrack"><img src="https://img.shields.io/github/stars/nisrulz/evtrack.svg?style=social&amp;label=Star" alt="GitHub stars"></a> <a href="https://github.com/nisrulz/evtrack/fork"><img src="https://img.shields.io/github/forks/nisrulz/evtrack.svg?style=social&amp;label=Fork" alt="GitHub forks"></a> <a href="https://github.com/nisrulz/evtrack"><img src="https://img.shields.io/github/watchers/nisrulz/evtrack.svg?style=social&amp;label=Watch" alt="GitHub watchers"></a> <a href="https://github.com/nisrulz/evtrack"><img src="https://img.shields.io/github/followers/nisrulz.svg?style=social&amp;label=Follow" alt="GitHub followers"></a>
+<a href="https://twitter.com/nisrulz"><img src="https://img.shields.io/twitter/follow/nisrulz.svg?style=social" alt="Twitter Follow"></a></p>
+
+<p>Event &amp; Exception tracking made easy.</p>
+
+<p>Based of <a href="https://github.com/nisrulz/easydeviceinfo">EasyDeviceInfo</a> lib and <a href="https://github.com/square/okhttp">okhttp</a>.</p>
 
 <h1>
-<a id="integration" class="anchor" href="#integration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Integration</h1>
+<a id="including-in-your-project" class="anchor" href="#including-in-your-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Including in your project</h1>
 
-<ul>
-<li>EvTrack is available in the MavenCentral, so getting it as simple as adding it as a dependency</li>
-</ul>
+<p>EvTrack is available in the Jcenter, so getting it as simple as adding it as a dependency</p>
 
-<div class="highlight highlight-source-groovy-gradle"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.github.nisrulz:evtrack:1.0.1<span class="pl-pds">'</span></span></pre></div>
+<div class="highlight highlight-source-groovy-gradle"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.github.nisrulz:evtrack:{latest version}<span class="pl-pds">'</span></span></pre></div>
+
+<p>where <code>{latest version}</code> corresponds to published version in <a href="https://bintray.com/nisrulz/maven/com.github.nisrulz%3Aevtrack/_latestVersion"> <img src="https://api.bintray.com/packages/nisrulz/maven/com.github.nisrulz%3Aevtrack/images/download.svg" alt="Download"> </a></p>
 
 <h1>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h1>
@@ -98,6 +106,25 @@ evTrack<span class="pl-k">.</span>recordException(e, exp_param, <span class="pl-
    };</pre></div>
 
 <h1>
+<a id="pull-requests" class="anchor" href="#pull-requests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pull Requests</h1>
+
+<p>I welcome and encourage all pull requests. It usually will take me within 24-48 hours to respond to any issue or request. Here are some basic rules to follow to ensure timely addition of your request:</p>
+
+<ol>
+<li>Match coding style (braces, spacing, etc.) This is best achieved using <code>CMD</code>+<code>Option</code>+<code>L</code> (Reformat code) on Mac (not sure for Windows) with Android Studio defaults.</li>
+<li>If its a feature, bugfix, or anything please only change code to what you specify.</li>
+<li>Please keep PR titles easy to read and descriptive of changes, this will make them easier to merge :)</li>
+<li>Pull requests <em>must</em> be made against <code>develop</code> branch. Any other branch (unless specified by the maintainers) will get rejected.</li>
+<li>Check for existing <a href="https://github.com/nisrulz/evtrack/issues">issues</a> first, before filing an issue.</li>
+<li>Have fun!</li>
+</ol>
+
+<h3>
+<a id="created--maintained-by" class="anchor" href="#created--maintained-by" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Created &amp; Maintained By</h3>
+
+<p><a href="https://github.com/nisrulz">Nishant Srivastava</a> (<a href="https://www.twitter.com/nisrulz">@nisrulz</a>)</p>
+
+<h1>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h1>
 
 <pre><code>Copyright 2016 Nishant Srivastava
@@ -116,7 +143,11 @@ limitations under the License.
 </code></pre>
       </section>
     </div>
-
+    <footer>
+      <p>Project maintained by <a href="https://github.com/nisrulz">nisrulz</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
   </body>
 </html>
