@@ -47,9 +47,6 @@ ext {
   //Other
   supportLibVersion = '25.0.0'
 
-  //Configs
-  publishLibrary = false
-
   // PackageHunter
   libVersionCode = 3
   libVersionName = '1.0.3'

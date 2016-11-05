@@ -45,7 +45,7 @@ dependencies {
   compile 'com.squareup.okhttp3:okhttp:3.4.2'
 }
 
-if (rootProject.ext.publishLibrary) {
+if (project.hasProperty('publish') && project.getProperty('publish')) {
   // Bintray Params
   ext {
     bintrayRepo = 'maven'
