@@ -26,6 +26,7 @@ import github.nisrulz.easydeviceinfo.base.EasyDeviceMod;
 import github.nisrulz.easydeviceinfo.base.EasyIdMod;
 import github.nisrulz.easydeviceinfo.base.EasyLocationMod;
 import github.nisrulz.easydeviceinfo.base.EasyNetworkMod;
+import github.nisrulz.easydeviceinfo.base.NetworkType;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -85,30 +86,32 @@ public class EvTrack {
     event_params.put("act", easyAppMod.getActivityName());
     event_params.put("time", String.valueOf(easyConfigMod.getTime()));
 
-    switch (easyNetworkMod.getNetworkType()) {
-      case EasyNetworkMod.CELLULAR_2G:
+    @NetworkType int network_type = easyNetworkMod.getNetworkType();
+
+    switch (network_type) {
+      case NetworkType.CELLULAR_2G:
         event_params.put("ct", "2g");
         break;
-      case EasyNetworkMod.CELLULAR_3G:
+      case NetworkType.CELLULAR_3G:
         event_params.put("ct", "3g");
         break;
-      case EasyNetworkMod.CELLULAR_4G:
+      case NetworkType.CELLULAR_4G:
         event_params.put("ct", "4g");
         break;
-      case EasyNetworkMod.CELLULAR_UNIDENTIFIED_GEN:
+      case NetworkType.CELLULAR_UNIDENTIFIED_GEN:
         event_params.put("ct", "cug");
         break;
-      case EasyNetworkMod.UNKNOWN:
+      case NetworkType.CELLULAR_UNKNOWN:
         event_params.put("ct", "na");
         break;
-      case EasyNetworkMod.WIFI_WIFIMAX:
-        event_params.put("ct", "wifi");
-        break;
+      case NetworkType.UNKNOWN:
       default:
         event_params.put("ct", "na");
         break;
+      case NetworkType.WIFI_WIFIMAX:
+        event_params.put("ct", "wifi");
+        break;
     }
-
     event_params.put("lat", String.valueOf(latlong[0]));
     event_params.put("lon", String.valueOf(latlong[1]));
 
