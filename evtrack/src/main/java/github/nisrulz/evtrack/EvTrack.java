@@ -42,7 +42,7 @@ public class EvTrack {
   private EasyDeviceMod easyDeviceMod;
   private EasyLocationMod easyLocationMod;
   private OkHttpClient client;
-  private final String LOGTAG = getClass().getSimpleName().toString();
+  private final String LOGTAG = getClass().getSimpleName();
 
   private Context context;
 

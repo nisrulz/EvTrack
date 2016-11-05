@@ -16,4 +16,6 @@
 
 <resources>
     <string name="app_name">EvTrack</string>
+    <string name="track_event">Track Event</string>
+    <string name="track_exception">Track Exception</string>
 </resources>

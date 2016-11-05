@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
   private EvTrack evTrack;
   private final String SERVER = "http://xx.xxx.xxx.xx:xxxx/";
-  private final String LOGTAG = getClass().getSimpleName().toString();
+  private final String LOGTAG = getClass().getSimpleName();
 
   Button btn_event, btn_exp;
 

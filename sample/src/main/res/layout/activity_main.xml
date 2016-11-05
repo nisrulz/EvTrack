@@ -29,7 +29,7 @@
         android:id="@+id/button_event"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Track Event"
+        android:text="@string/track_event"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -37,7 +37,7 @@
         android:id="@+id/button_exp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Track Exception"
+        android:text="@string/track_exception"
         android:layout_below="@+id/button_event"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
