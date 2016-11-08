@@ -42,14 +42,13 @@ task clean(type: Delete) {
   delete rootProject.buildDir
 }
 
-// Library Info
 ext {
   //Other
   supportLibVersion = '25.0.0'
 
-  // PackageHunter
-  libVersionCode = 3
-  libVersionName = '1.0.3'
+  // Library Info
+  libVersionCode = 4
+  libVersionName = '1.0.4'
   libPomUrl = 'https://github.com/nisrulz/evtrack'
   libGithubRepo = 'nisrulz/evtrack'
 
