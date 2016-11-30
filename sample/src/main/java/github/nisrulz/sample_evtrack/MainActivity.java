@@ -19,7 +19,6 @@ package github.nisrulz.sample_evtrack;
 import android.os.Bundle;
 import android.support.v4.util.ArrayMap;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import github.nisrulz.evtrack.EvTrack;
@@ -32,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
   private EvTrack evTrack;
   private final String SERVER = "http://xx.xxx.xxx.xx:xxxx/";
-  private final String LOGTAG = getClass().getSimpleName();
+
+  private final Logger logger = Logger.withTag(this.getClass().getSimpleName());
 
   Button btn_event, btn_exp;
 
@@ -73,12 +73,12 @@ public class MainActivity extends AppCompatActivity {
   private final Callback httpCallback = new Callback() {
     @Override
     public void onFailure(Call call, IOException e) {
-      Log.e(LOGTAG, "Req Failed : " + e.getLocalizedMessage());
+      logger.log("Something went wrong with XYZ.").withCause(e);
     }
 
     @Override
     public void onResponse(Call call, Response response) throws IOException {
-      Log.i(LOGTAG, "Req Successful : " + String.valueOf(response.code()));
+      logger.log(String.valueOf(response.code()));
     }
   };
 }
