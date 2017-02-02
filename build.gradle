@@ -44,11 +44,13 @@ task clean(type: Delete) {
 
 ext {
   //Other
-  supportLibVersion = '25.1.0'
+  supportLibVersion = '25.1.1'
+  easydeviceinfoVersion = '2.3.2'
+  okhttpVersion = '3.6.0'
 
   // Library Info
-  libVersionCode = 4
-  libVersionName = '1.0.4'
+  libVersionCode = 5
+  libVersionName = '1.0.5'
   libPomUrl = 'https://github.com/nisrulz/evtrack'
   libGithubRepo = 'nisrulz/evtrack'
 
