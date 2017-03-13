@@ -21,7 +21,7 @@ buildscript {
     jcenter()
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:2.2.3'
+    classpath 'com.android.tools.build:gradle:2.3.0'
 
     // NOTE: Do not place your application dependencies here; they belong
     // in the individual module build.gradle files
@@ -44,18 +44,18 @@ task clean(type: Delete) {
 
 ext {
   //Other
-  supportLibVersion = '25.1.1'
-  easydeviceinfoVersion = '2.3.2'
+  supportLibVersion = '25.2.0'
+  easydeviceinfoVersion = '2.3.3'
   okhttpVersion = '3.6.0'
 
   // Library Info
-  libVersionCode = 5
-  libVersionName = '1.0.5'
+  libVersionCode = 6
+  libVersionName = '1.1.0'
   libPomUrl = 'https://github.com/nisrulz/evtrack'
   libGithubRepo = 'nisrulz/evtrack'
 
 
   libModuleName = 'evtrack'
-  libModuleDesc = 'Android library that makes event & exception tracking easy. Based of EasyDeviceInfo lib and okhttp.'
+  libModuleDesc = 'Android library that makes event & exception tracking easy. Based of EasyDeviceInfo and okhttp android library.'
   libBintrayName = 'com.github.nisrulz:evtrack'
 }
