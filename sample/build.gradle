@@ -27,6 +27,9 @@ android {
     targetSdkVersion 25
     versionCode 1
     versionName "1.0.0"
+
+    // Using MOcked api endpoint link from http://myjson.com
+    buildConfigField "String", "SERVER_ENDPOINT", '"https://api.myjson.com/bins/73dp3"'
   }
   buildTypes {
     release {

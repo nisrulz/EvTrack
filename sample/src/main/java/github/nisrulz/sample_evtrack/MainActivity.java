@@ -30,11 +30,11 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
 
   private EvTrack evTrack;
-  private final String SERVER = "http://xx.xxx.xxx.xx:xxxx/";
 
   private final Logger logger = Logger.withTag(this.getClass().getSimpleName());
 
-  Button btn_event, btn_exp;
+  private Button btn_event;
+  private Button btn_exp;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
     btn_event.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        ArrayMap<String, String> event_params = new ArrayMap<String, String>();
+        ArrayMap<String, String> event_params = new ArrayMap<>();
         event_params.put("sdk", "1.0");
-        evTrack.recordEvent(event_params, SERVER + "test", httpCallback);
+        evTrack.recordEvent(event_params, BuildConfig.SERVER_ENDPOINT + "test", httpCallback);
       }
     });
 
@@ -61,10 +61,10 @@ public class MainActivity extends AppCompatActivity {
         try {
           throw new RuntimeException("This is an Error");
         } catch (RuntimeException e) {
-          ArrayMap<String, String> exp_param = new ArrayMap<String, String>();
+          ArrayMap<String, String> exp_param = new ArrayMap<>();
           exp_param.put("code", "SP0002");
           exp_param.put("sdk", "1.1");
-          evTrack.recordException(e, exp_param, SERVER + "test", httpCallback);
+          evTrack.recordException(e, exp_param, BuildConfig.SERVER_ENDPOINT + "test", httpCallback);
         }
       }
     });

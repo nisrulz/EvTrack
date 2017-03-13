@@ -35,16 +35,16 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 
 public class EvTrack {
-  private EasyIdMod easyIdMod;
-  private EasyAppMod easyAppMod;
-  private EasyConfigMod easyConfigMod;
-  private EasyNetworkMod easyNetworkMod;
-  private EasyDeviceMod easyDeviceMod;
-  private EasyLocationMod easyLocationMod;
+  private final EasyIdMod easyIdMod;
+  private final EasyAppMod easyAppMod;
+  private final EasyConfigMod easyConfigMod;
+  private final EasyNetworkMod easyNetworkMod;
+  private final EasyDeviceMod easyDeviceMod;
+  private final EasyLocationMod easyLocationMod;
   private OkHttpClient client;
   private final String LOGTAG = getClass().getSimpleName();
 
-  private Context context;
+  private final Context context;
 
   private boolean enableLogs_exp = false;
   private boolean enableLogs_event = false;
