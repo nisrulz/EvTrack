@@ -1,4 +1,4 @@
-Please fill out the blanks below decribing your PR
+Please fill out the blanks below describing your PR
 
 What does this implement/fix? Explain your changes.
 ---------------------------------------------------

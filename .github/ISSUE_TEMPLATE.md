@@ -1,4 +1,4 @@
-Please fill out the blanks below decribing your issue
+Please fill out the blanks below describing your issue
 
 What are the steps to reproduce this issue?
 -------------------------------------------
