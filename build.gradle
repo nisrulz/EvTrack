@@ -44,7 +44,7 @@ task clean(type: Delete) {
 
 ext {
   //Other
-  supportLibVersion = '25.2.0'
+  supportLibVersion = '25.3.1'
   easydeviceinfoVersion = '2.3.3'
   okhttpVersion = '3.6.0'
 
