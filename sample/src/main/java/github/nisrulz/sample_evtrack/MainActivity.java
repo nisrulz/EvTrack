@@ -29,10 +29,19 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-  private EvTrack evTrack;
-
   private final Logger logger = Logger.withTag(this.getClass().getSimpleName());
+  private final Callback httpCallback = new Callback() {
+    @Override
+    public void onFailure(Call call, IOException e) {
+      logger.log("Something went wrong with XYZ.").withCause(e);
+    }
 
+    @Override
+    public void onResponse(Call call, Response response) throws IOException {
+      logger.log(String.valueOf(response.code()));
+    }
+  };
+  private EvTrack evTrack;
   private Button btn_event;
   private Button btn_exp;
 
@@ -69,16 +78,4 @@ public class MainActivity extends AppCompatActivity {
       }
     });
   }
-
-  private final Callback httpCallback = new Callback() {
-    @Override
-    public void onFailure(Call call, IOException e) {
-      logger.log("Something went wrong with XYZ.").withCause(e);
-    }
-
-    @Override
-    public void onResponse(Call call, Response response) throws IOException {
-      logger.log(String.valueOf(response.code()));
-    }
-  };
 }

@@ -46,7 +46,7 @@ ext {
   //Other
   supportLibVersion = '25.3.1'
   easydeviceinfoVersion = '2.3.3'
-  okhttpVersion = '3.6.0'
+  okhttpVersion = '3.7.0'
 
   // Library Info
   libVersionCode = 6
@@ -56,6 +56,7 @@ ext {
 
 
   libModuleName = 'evtrack'
-  libModuleDesc = 'Android library that makes event & exception tracking easy. Based of EasyDeviceInfo and okhttp android library.'
+  libModuleDesc =
+      'Android library that makes event & exception tracking easy. Based of EasyDeviceInfo and okhttp android library.'
   libBintrayName = 'com.github.nisrulz:evtrack'
 }

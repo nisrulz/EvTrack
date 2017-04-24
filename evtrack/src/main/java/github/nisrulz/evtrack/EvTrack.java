@@ -41,11 +41,9 @@ public class EvTrack {
   private final EasyNetworkMod easyNetworkMod;
   private final EasyDeviceMod easyDeviceMod;
   private final EasyLocationMod easyLocationMod;
-  private OkHttpClient client;
   private final String LOGTAG = getClass().getSimpleName();
-
   private final Context context;
-
+  private OkHttpClient client;
   private boolean enableLogs_exp = false;
   private boolean enableLogs_event = false;
 
@@ -124,6 +122,28 @@ public class EvTrack {
     }
   }
 
+  /**
+   * Make a POST Request
+   */
+  private void postReq(OkHttpClient client, String url, ArrayMap<String, String> params,
+      Callback callback) {
+
+    FormBody.Builder formdata = new FormBody.Builder();
+    for (int i = 0; i < params.size(); i++) {
+      formdata.add(params.keyAt(i), params.valueAt(i));
+    }
+
+    RequestBody formBody = formdata.build();
+
+    Request request = new Request.Builder().url(url).post(formBody).build();
+    try {
+      Call call = client.newCall(request);
+      call.enqueue(callback);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
   public void recordException(Exception exp, ArrayMap<String, String> exp_params, String url,
       Callback httpCallback) {
 
@@ -154,28 +174,6 @@ public class EvTrack {
     }
     else {
       Log.e(LOGTAG, "INTERNET permission not granted! No request was made to the server!");
-    }
-  }
-
-  /**
-   * Make a POST Request
-   */
-  private void postReq(OkHttpClient client, String url, ArrayMap<String, String> params,
-      Callback callback) {
-
-    FormBody.Builder formdata = new FormBody.Builder();
-    for (int i = 0; i < params.size(); i++) {
-      formdata.add(params.keyAt(i), params.valueAt(i));
-    }
-
-    RequestBody formBody = formdata.build();
-
-    Request request = new Request.Builder().url(url).post(formBody).build();
-    try {
-      Call call = client.newCall(request);
-      call.enqueue(callback);
-    } catch (Exception e) {
-      e.printStackTrace();
     }
   }
 }

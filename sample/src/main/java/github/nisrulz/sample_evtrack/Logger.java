@@ -23,13 +23,13 @@ public class Logger {
   private final String TAG;
   private final int priority;
 
-  public static Logger withTag(String tag) {
-    return new Logger(tag);
-  }
-
   private Logger(String TAG) {
     this.TAG = TAG;
     this.priority = Log.DEBUG; // This could be ERROR / INFO / VERBOSE
+  }
+
+  public static Logger withTag(String tag) {
+    return new Logger(tag);
   }
 
   public Logger log(String message) {
