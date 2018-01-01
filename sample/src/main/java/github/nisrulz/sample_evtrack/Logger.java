@@ -20,28 +20,29 @@ import android.util.Log;
 
 public class Logger {
 
-  private final String TAG;
-  private final int priority;
+    private final String TAG;
 
-  private Logger(String TAG) {
-    this.TAG = TAG;
-    this.priority = Log.DEBUG; // This could be ERROR / INFO / VERBOSE
-  }
+    private final int priority;
 
-  public static Logger withTag(String tag) {
-    return new Logger(tag);
-  }
-
-  public Logger log(String message) {
-    if (BuildConfig.DEBUG) {
-      Log.println(priority, TAG, message);
+    public static Logger withTag(String tag) {
+        return new Logger(tag);
     }
-    return this;
-  }
 
-  public void withCause(Exception cause) {
-    if (BuildConfig.DEBUG) {
-      Log.println(priority, TAG, Log.getStackTraceString(cause));
+    private Logger(String TAG) {
+        this.TAG = TAG;
+        this.priority = Log.DEBUG; // This could be ERROR / INFO / VERBOSE
     }
-  }
+
+    public Logger log(String message) {
+        if (BuildConfig.DEBUG) {
+            Log.println(priority, TAG, message);
+        }
+        return this;
+    }
+
+    public void withCause(Exception cause) {
+        if (BuildConfig.DEBUG) {
+            Log.println(priority, TAG, Log.getStackTraceString(cause));
+        }
+    }
 }

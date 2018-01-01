@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2016 Nishant Srivastava
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,24 +22,21 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="github.nisrulz.sample_evtrack.MainActivity"
-    >
+    tools:context="github.nisrulz.sample_evtrack.MainActivity">
 
-  <Button
-      android:id="@+id/button_event"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_alignParentTop="true"
-      android:layout_centerHorizontal="true"
-      android:text="@string/track_event"
-      />
+    <Button
+        android:id="@+id/button_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/track_event" />
 
-  <Button
-      android:id="@+id/button_exp"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_below="@+id/button_event"
-      android:layout_centerHorizontal="true"
-      android:text="@string/track_exception"
-      />
+    <Button
+        android:id="@+id/button_exp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_event"
+        android:layout_centerHorizontal="true"
+        android:text="@string/track_exception" />
 </RelativeLayout>

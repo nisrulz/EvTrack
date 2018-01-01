@@ -27,55 +27,60 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+
 public class MainActivity extends AppCompatActivity {
 
-  private final Logger logger = Logger.withTag(this.getClass().getSimpleName());
-  private final Callback httpCallback = new Callback() {
-    @Override
-    public void onFailure(Call call, IOException e) {
-      logger.log("Something went wrong with XYZ.").withCause(e);
-    }
+    private Button btn_event;
 
-    @Override
-    public void onResponse(Call call, Response response) throws IOException {
-      logger.log(String.valueOf(response.code()));
-    }
-  };
-  private EvTrack evTrack;
-  private Button btn_event;
-  private Button btn_exp;
+    private Button btn_exp;
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+    private EvTrack evTrack;
 
-    evTrack = new EvTrack(getApplicationContext());
-    evTrack.enableLogs();
+    private final Logger logger = Logger.withTag(this.getClass().getSimpleName());
 
-    btn_event = (Button) findViewById(R.id.button_event);
-    btn_event.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        ArrayMap<String, String> event_params = new ArrayMap<>();
-        event_params.put("sdk", "1.0");
-        evTrack.recordEvent(event_params, BuildConfig.SERVER_ENDPOINT + "test", httpCallback);
-      }
-    });
-
-    btn_exp = (Button) findViewById(R.id.button_exp);
-    btn_exp.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        try {
-          throw new RuntimeException("This is an Error");
-        } catch (RuntimeException e) {
-          ArrayMap<String, String> exp_param = new ArrayMap<>();
-          exp_param.put("code", "SP0002");
-          exp_param.put("sdk", "1.1");
-          evTrack.recordException(e, exp_param, BuildConfig.SERVER_ENDPOINT + "test", httpCallback);
+    private final Callback httpCallback = new Callback() {
+        @Override
+        public void onFailure(Call call, IOException e) {
+            logger.log("Something went wrong with XYZ.").withCause(e);
         }
-      }
-    });
-  }
+
+        @Override
+        public void onResponse(Call call, Response response) throws IOException {
+            logger.log(String.valueOf(response.code()));
+        }
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        evTrack = new EvTrack(getApplicationContext());
+        evTrack.enableLogs();
+
+        btn_event = (Button) findViewById(R.id.button_event);
+        btn_event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayMap<String, String> event_params = new ArrayMap<>();
+                event_params.put("sdk", "1.0");
+                evTrack.recordEvent(event_params, BuildConfig.SERVER_ENDPOINT + "test", httpCallback);
+            }
+        });
+
+        btn_exp = (Button) findViewById(R.id.button_exp);
+        btn_exp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    throw new RuntimeException("This is an Error");
+                } catch (RuntimeException e) {
+                    ArrayMap<String, String> exp_param = new ArrayMap<>();
+                    exp_param.put("code", "SP0002");
+                    exp_param.put("sdk", "1.1");
+                    evTrack.recordException(e, exp_param, BuildConfig.SERVER_ENDPOINT + "test", httpCallback);
+                }
+            }
+        });
+    }
 }

@@ -35,145 +35,154 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 
 public class EvTrack {
-  private final EasyIdMod easyIdMod;
-  private final EasyAppMod easyAppMod;
-  private final EasyConfigMod easyConfigMod;
-  private final EasyNetworkMod easyNetworkMod;
-  private final EasyDeviceMod easyDeviceMod;
-  private final EasyLocationMod easyLocationMod;
-  private final String LOGTAG = getClass().getSimpleName();
-  private final Context context;
-  private OkHttpClient client;
-  private boolean enableLogs_exp = false;
-  private boolean enableLogs_event = false;
 
-  public EvTrack(Context context) {
-    this.context = context;
-    easyLocationMod = new EasyLocationMod(context);
-    easyIdMod = new EasyIdMod(context);
-    easyAppMod = new EasyAppMod(context);
-    easyConfigMod = new EasyConfigMod(context);
-    easyNetworkMod = new EasyNetworkMod(context);
-    easyDeviceMod = new EasyDeviceMod(context);
-  }
+    private final String LOGTAG = getClass().getSimpleName();
 
-  public void enableLogs() {
-    enableLogs_event = true;
-    enableLogs_exp = true;
-  }
+    private OkHttpClient client;
 
-  public void recordEvent(ArrayMap<String, String> event_params, String url,
-      Callback httpCallback) {
+    private final Context context;
 
-    //Initialize Http Client
-    client = new OkHttpClient();
+    private final EasyAppMod easyAppMod;
 
-    //Log the Event details
-    if (enableLogs_event) {
-      Log.d(LOGTAG, "*-------------Event-------------*\n");
-      for (int i = 0; i < event_params.size(); i++) {
-        Log.d(LOGTAG, "\nKey : " + event_params.keyAt(i) + "\tValue : " + event_params.valueAt(i));
-      }
+    private final EasyConfigMod easyConfigMod;
+
+    private final EasyDeviceMod easyDeviceMod;
+
+    private final EasyIdMod easyIdMod;
+
+    private final EasyLocationMod easyLocationMod;
+
+    private final EasyNetworkMod easyNetworkMod;
+
+    private boolean enableLogs_event = false;
+
+    private boolean enableLogs_exp = false;
+
+    public EvTrack(Context context) {
+        this.context = context;
+        easyLocationMod = new EasyLocationMod(context);
+        easyIdMod = new EasyIdMod(context);
+        easyAppMod = new EasyAppMod(context);
+        easyConfigMod = new EasyConfigMod(context);
+        easyNetworkMod = new EasyNetworkMod(context);
+        easyDeviceMod = new EasyDeviceMod(context);
     }
 
-    //Get LatLong
-    double[] latlong = easyLocationMod.getLatLong();
-
-    //Push extra data in event request
-    event_params.put("aid", easyIdMod.getAndroidID());
-    event_params.put("act", easyAppMod.getActivityName());
-    event_params.put("time", String.valueOf(easyConfigMod.getTime()));
-
-    @NetworkType int network_type = easyNetworkMod.getNetworkType();
-
-    switch (network_type) {
-      case NetworkType.CELLULAR_2G:
-        event_params.put("ct", "2g");
-        break;
-      case NetworkType.CELLULAR_3G:
-        event_params.put("ct", "3g");
-        break;
-      case NetworkType.CELLULAR_4G:
-        event_params.put("ct", "4g");
-        break;
-      case NetworkType.CELLULAR_UNIDENTIFIED_GEN:
-        event_params.put("ct", "cug");
-        break;
-      case NetworkType.CELLULAR_UNKNOWN:
-        event_params.put("ct", "na");
-        break;
-      case NetworkType.UNKNOWN:
-      default:
-        event_params.put("ct", "na");
-        break;
-      case NetworkType.WIFI_WIFIMAX:
-        event_params.put("ct", "wifi");
-        break;
-    }
-    event_params.put("lat", String.valueOf(latlong[0]));
-    event_params.put("lon", String.valueOf(latlong[1]));
-
-    if (context.checkCallingOrSelfPermission(android.Manifest.permission.INTERNET)
-        == PackageManager.PERMISSION_GRANTED) {
-      postReq(client, url, event_params, httpCallback);
-    }
-    else {
-      Log.e(LOGTAG, "INTERNET permission not granted! No request was made to the server!");
-    }
-  }
-
-  /**
-   * Make a POST Request
-   */
-  private void postReq(OkHttpClient client, String url, ArrayMap<String, String> params,
-      Callback callback) {
-
-    FormBody.Builder formdata = new FormBody.Builder();
-    for (int i = 0; i < params.size(); i++) {
-      formdata.add(params.keyAt(i), params.valueAt(i));
+    public void enableLogs() {
+        enableLogs_event = true;
+        enableLogs_exp = true;
     }
 
-    RequestBody formBody = formdata.build();
+    public void recordEvent(ArrayMap<String, String> event_params, String url,
+            Callback httpCallback) {
 
-    Request request = new Request.Builder().url(url).post(formBody).build();
-    try {
-      Call call = client.newCall(request);
-      call.enqueue(callback);
-    } catch (Exception e) {
-      e.printStackTrace();
+        //Initialize Http Client
+        client = new OkHttpClient();
+
+        //Log the Event details
+        if (enableLogs_event) {
+            Log.d(LOGTAG, "*-------------Event-------------*\n");
+            for (int i = 0; i < event_params.size(); i++) {
+                Log.d(LOGTAG, "\nKey : " + event_params.keyAt(i) + "\tValue : " + event_params.valueAt(i));
+            }
+        }
+
+        //Get LatLong
+        double[] latlong = easyLocationMod.getLatLong();
+
+        //Push extra data in event request
+        event_params.put("aid", easyIdMod.getAndroidID());
+        event_params.put("act", easyAppMod.getActivityName());
+        event_params.put("time", String.valueOf(easyConfigMod.getTime()));
+
+        @NetworkType int network_type = easyNetworkMod.getNetworkType();
+
+        switch (network_type) {
+            case NetworkType.CELLULAR_2G:
+                event_params.put("ct", "2g");
+                break;
+            case NetworkType.CELLULAR_3G:
+                event_params.put("ct", "3g");
+                break;
+            case NetworkType.CELLULAR_4G:
+                event_params.put("ct", "4g");
+                break;
+            case NetworkType.CELLULAR_UNIDENTIFIED_GEN:
+                event_params.put("ct", "cug");
+                break;
+            case NetworkType.CELLULAR_UNKNOWN:
+                event_params.put("ct", "na");
+                break;
+            case NetworkType.UNKNOWN:
+            default:
+                event_params.put("ct", "na");
+                break;
+            case NetworkType.WIFI_WIFIMAX:
+                event_params.put("ct", "wifi");
+                break;
+        }
+        event_params.put("lat", String.valueOf(latlong[0]));
+        event_params.put("lon", String.valueOf(latlong[1]));
+
+        if (context.checkCallingOrSelfPermission(android.Manifest.permission.INTERNET)
+                == PackageManager.PERMISSION_GRANTED) {
+            postReq(client, url, event_params, httpCallback);
+        } else {
+            Log.e(LOGTAG, "INTERNET permission not granted! No request was made to the server!");
+        }
     }
-  }
 
-  public void recordException(Exception exp, ArrayMap<String, String> exp_params, String url,
-      Callback httpCallback) {
+    public void recordException(Exception exp, ArrayMap<String, String> exp_params, String url,
+            Callback httpCallback) {
 
-    //Initialize Http Client
-    client = new OkHttpClient();
+        //Initialize Http Client
+        client = new OkHttpClient();
 
-    exp_params.put("etype", exp.getClass().getName());
-    exp_params.put("ecause", exp.getCause().toString());
-    exp_params.put("emsg", exp.getMessage());
-    exp_params.put("time", Long.toString(easyConfigMod.getTime()));
-    exp_params.put("aid", easyIdMod.getAndroidID());
-    exp_params.put("mk", easyDeviceMod.getManufacturer());
-    exp_params.put("mo", easyDeviceMod.getModel());
-    exp_params.put("osv", easyDeviceMod.getOSVersion());
+        exp_params.put("etype", exp.getClass().getName());
+        exp_params.put("ecause", exp.getCause().toString());
+        exp_params.put("emsg", exp.getMessage());
+        exp_params.put("time", Long.toString(easyConfigMod.getTime()));
+        exp_params.put("aid", easyIdMod.getAndroidID());
+        exp_params.put("mk", easyDeviceMod.getManufacturer());
+        exp_params.put("mo", easyDeviceMod.getModel());
+        exp_params.put("osv", easyDeviceMod.getOSVersion());
 
-    //Log the Exception details
-    if (enableLogs_exp) {
-      Log.e(LOGTAG, "*------SDK Encountered an exception !!------*\n");
-      Log.e(LOGTAG, "Exception : " + exp_params.get("etype"));
-      Log.e(LOGTAG, "Cause : " + exp_params.get("ecause"));
-      Log.e(LOGTAG, "Msg : " + exp_params.get("emsg"));
-      Log.e(LOGTAG, "Device : " + exp_params.get("mk") + "_" + exp_params.get("mo"));
+        //Log the Exception details
+        if (enableLogs_exp) {
+            Log.e(LOGTAG, "*------SDK Encountered an exception !!------*\n");
+            Log.e(LOGTAG, "Exception : " + exp_params.get("etype"));
+            Log.e(LOGTAG, "Cause : " + exp_params.get("ecause"));
+            Log.e(LOGTAG, "Msg : " + exp_params.get("emsg"));
+            Log.e(LOGTAG, "Device : " + exp_params.get("mk") + "_" + exp_params.get("mo"));
+        }
+
+        if (context.checkCallingOrSelfPermission(android.Manifest.permission.INTERNET)
+                == PackageManager.PERMISSION_GRANTED) {
+            postReq(client, url, exp_params, httpCallback);
+        } else {
+            Log.e(LOGTAG, "INTERNET permission not granted! No request was made to the server!");
+        }
     }
 
-    if (context.checkCallingOrSelfPermission(android.Manifest.permission.INTERNET)
-        == PackageManager.PERMISSION_GRANTED) {
-      postReq(client, url, exp_params, httpCallback);
+    /**
+     * Make a POST Request
+     */
+    private void postReq(OkHttpClient client, String url, ArrayMap<String, String> params,
+            Callback callback) {
+
+        FormBody.Builder formdata = new FormBody.Builder();
+        for (int i = 0; i < params.size(); i++) {
+            formdata.add(params.keyAt(i), params.valueAt(i));
+        }
+
+        RequestBody formBody = formdata.build();
+
+        Request request = new Request.Builder().url(url).post(formBody).build();
+        try {
+            Call call = client.newCall(request);
+            call.enqueue(callback);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-    else {
-      Log.e(LOGTAG, "INTERNET permission not granted! No request was made to the server!");
-    }
-  }
 }

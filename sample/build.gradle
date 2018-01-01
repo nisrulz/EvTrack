@@ -17,31 +17,31 @@
 apply plugin: 'com.android.application'
 
 android {
-  compileSdkVersion rootProject.ext.compileSdkVersion
-  buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
-  defaultConfig {
-    minSdkVersion rootProject.ext.minSdkVersion
-    targetSdkVersion rootProject.ext.targetSdkVersion
-    applicationId "github.nisrulz.sample_evtrack"
-    versionCode 1
-    versionName "1.0.0"
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        applicationId "github.nisrulz.sample_evtrack"
+        versionCode 1
+        versionName "1.0.0"
 
-    // Using MOcked api endpoint link from http://myjson.com
-    buildConfigField "String", "SERVER_ENDPOINT", '"https://api.myjson.com/bins/73dp3"'
-  }
-  buildTypes {
-    release {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        // Using MOcked api endpoint link from http://myjson.com
+        buildConfigField "String", "SERVER_ENDPOINT", '"https://api.myjson.com/bins/73dp3"'
     }
-  }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
 }
 
 dependencies {
-  implementation fileTree(dir: 'libs', include: ['*.jar'])
-  testImplementation 'junit:junit:4.12'
-  implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibVersion"
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibVersion"
 
-  implementation project(':evtrack')
+    implementation project(':evtrack')
 }
