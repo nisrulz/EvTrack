@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-dependencies {
-//    implementation "com.android.support:support-core-utils:${rootProject.ext.supportLibVersion}"
-//    implementation "com.github.nisrulz:easydeviceinfo-base:${rootProject.ext.easydeviceinfoVersion}"
-//    api "com.squareup.okhttp3:okhttp:${rootProject.ext.okhttpVersion}"
+object Config {
+    const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 }

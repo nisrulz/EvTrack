@@ -17,7 +17,7 @@
 package github.nisrulz.sample_evtrack;
 
 import android.os.Bundle;
-import android.support.v4.util.ArrayMap;
+import androidx.core.util.ArrayMap;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;

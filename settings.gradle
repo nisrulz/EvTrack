@@ -14,4 +14,6 @@
  * limitations under the License.
  */
 
-include ':sample', ':evtrack'
+rootProject.name = 'EvtrackProject'
+include ':sample'
+include ':evtrack'

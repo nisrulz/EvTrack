@@ -14,8 +14,15 @@
  * limitations under the License.
  */
 
-dependencies {
-//    implementation "com.android.support:support-core-utils:${rootProject.ext.supportLibVersion}"
-//    implementation "com.github.nisrulz:easydeviceinfo-base:${rootProject.ext.easydeviceinfoVersion}"
-//    api "com.squareup.okhttp3:okhttp:${rootProject.ext.okhttpVersion}"
+object Plugins {
+    // Plugins
+    const val android = "com.android.tools.build:gradle:${Versions.androidGradlePlugin}"
+
+    // Kotlin
+    const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+
+
+    // Publish
+    const val bintray = "com.jfrog.bintray.gradle:gradle-bintray-plugin:${Versions.bintrayPlugin}"
+    const val androidMaven = "com.github.dcendents:android-maven-gradle-plugin:${Versions.androidMavenPlugin}"
 }

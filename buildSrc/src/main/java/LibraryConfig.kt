@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
-dependencies {
-//    implementation "com.android.support:support-core-utils:${rootProject.ext.supportLibVersion}"
-//    implementation "com.github.nisrulz:easydeviceinfo-base:${rootProject.ext.easydeviceinfoVersion}"
-//    api "com.squareup.okhttp3:okhttp:${rootProject.ext.okhttpVersion}"
+object LibraryConfig {
+    const val libPomUrl = "https://github.com/nisrulz/evtrack"
+    const val libGithubRepo = "nisrulz/evtrack"
+    const val libModuleName = "evtrack"
+    const val libModuleDesc = "Android library that makes event & exception tracking easy. Based of EasyDeviceInfo and okhttp android library."
+    const val libBintrayName = "com.github.nisrulz:evtrack"
 }

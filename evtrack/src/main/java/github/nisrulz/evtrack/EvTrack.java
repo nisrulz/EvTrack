@@ -18,7 +18,7 @@ package github.nisrulz.evtrack;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.support.v4.util.ArrayMap;
+import androidx.core.util.ArrayMap;
 import android.util.Log;
 import github.nisrulz.easydeviceinfo.base.EasyAppMod;
 import github.nisrulz.easydeviceinfo.base.EasyConfigMod;
